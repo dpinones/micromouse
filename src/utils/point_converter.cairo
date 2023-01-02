@@ -1,0 +1,14 @@
+%lang starknet
+
+from starkware.cairo.common.math import unsigned_div_rem
+
+from src.constants.grid import GRID_WIDTH
+
+func convert_id_to_coords{range_check_ptr}(position: felt, grid_dimension: felt) -> (felt, felt) {
+    let (y, x) = unsigned_div_rem(position, grid_dimension);
+    return (x, y);
+}
+
+func convert_coords_to_id{range_check_ptr}(x: felt, y: felt) -> felt {
+    return y * GRID_WIDTH + x;
+}
