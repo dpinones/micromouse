@@ -3,5 +3,10 @@ protostar-version = "0.9.0"
 lib-path = "lib"
 
 [contracts]
-main = ["src/main.cairo"]
+micro_mouse = ["src/micro_mouse.cairo"]
+user = ["src/user.cairo"]
 
+[profile.testnet.project]
+network="testnet"
+private-key-path = "./.env"
+account-address="0x014032DA2716B9903E103E24A0aA4d389d45Bd105547C74d4BE734C46D2bCa09"
