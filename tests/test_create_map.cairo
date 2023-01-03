@@ -4,7 +4,7 @@ from starkware.cairo.common.alloc import alloc
 from starkware.cairo.common.bool import TRUE, FALSE
 from starkware.cairo.common.cairo_builtins import HashBuiltin
 
-from src.main import create_map, map_count, map_list
+from src.micro_mouse import create_map, map_count, map_list
 from src.types.data_types import DataTypes
 
 
