@@ -59,6 +59,29 @@ func create_map{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}
 
     return (map_id,);
 }
+@view 
+func get_cells{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}(
+    map_id: felt
+) -> (cells_len: felt, cells: DataTypes.Cell*) {
+    alloc_locals;
+    let (map: DataTypes.Map) = maps.read(map_id);
+    let cells: DataTypes.Cell* = alloc(); 
+    let width: felt = map.width * map.width;
+    _get_cells(map_id, 0, width , cells);
+    return (width, cells,);
+}
+
+func _get_cells{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}(
+    map_id: felt, index: felt, cell_len: felt, cells: DataTypes.Cell*
+) -> () {
+    if (cell_len == 0) {
+        return ();
+    }
+    let (cell: DataTypes.Cell) = map_list.read(map_id, index);
+    assert cells[index] = cell;
+    _get_cells(map_id, index + 1, cell_len - 1, cells);
+    return ();
+}
 
 @view
 func get_neighbors{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}(
