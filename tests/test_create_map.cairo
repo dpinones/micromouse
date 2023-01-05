@@ -17,14 +17,14 @@ func test_create_map_happy_path{syscall_ptr: felt*, range_check_ptr, pedersen_pt
 
     //                                   ↑       →    ↓       ←
     assert cells[0] = DataTypes.Cell(1, FALSE, TRUE, FALSE, FALSE);
-    assert cells[1] = DataTypes.Cell(0, TRUE, FALSE, FALSE, TRUE);
-    assert cells[2] = DataTypes.Cell(9, TRUE, FALSE, FALSE, FALSE);
-    assert cells[3] = DataTypes.Cell(0, TRUE, FALSE, FALSE, FALSE);
-    assert cells[4] = DataTypes.Cell(0, TRUE, FALSE, TRUE, FALSE);
-    assert cells[5] = DataTypes.Cell(0, TRUE, FALSE, TRUE, FALSE);
-    assert cells[6] = DataTypes.Cell(0, FALSE, TRUE, TRUE, FALSE);
-    assert cells[7] = DataTypes.Cell(0, FALSE, TRUE, TRUE, TRUE);
-    assert cells[8] = DataTypes.Cell(0, FALSE, FALSE, TRUE, TRUE);
+    assert cells[1] = DataTypes.Cell(2, TRUE, FALSE, FALSE, TRUE);
+    assert cells[2] = DataTypes.Cell(3, TRUE, FALSE, FALSE, FALSE);
+    assert cells[3] = DataTypes.Cell(4, TRUE, FALSE, FALSE, FALSE);
+    assert cells[4] = DataTypes.Cell(5, TRUE, FALSE, TRUE, FALSE);
+    assert cells[5] = DataTypes.Cell(6, TRUE, FALSE, TRUE, FALSE);
+    assert cells[6] = DataTypes.Cell(7, FALSE, TRUE, TRUE, FALSE);
+    assert cells[7] = DataTypes.Cell(8, FALSE, TRUE, TRUE, TRUE);
+    assert cells[8] = DataTypes.Cell(9, FALSE, FALSE, TRUE, TRUE);
 
     let cells_len: felt = 9; 
     let width: felt = 3;
@@ -37,10 +37,10 @@ func test_create_map_happy_path{syscall_ptr: felt*, range_check_ptr, pedersen_pt
     assert map_0 = DataTypes.Cell(1, FALSE, TRUE, FALSE, FALSE);
 
     let (map_4: DataTypes.Cell) = map_list.read(map_id, 4);
-    assert map_4 = DataTypes.Cell(0, TRUE, FALSE, TRUE, FALSE);
+    assert map_4 = DataTypes.Cell(5, TRUE, FALSE, TRUE, FALSE);
 
     let (map_8: DataTypes.Cell) = map_list.read(map_id, 8);
-    assert map_8 = DataTypes.Cell(0, FALSE, FALSE, TRUE, TRUE);
+    assert map_8 = DataTypes.Cell(9, FALSE, FALSE, TRUE, TRUE);
 
     return ();
 }
